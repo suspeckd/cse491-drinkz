@@ -17,9 +17,10 @@ def _reset_db():
 class LiquorMissing(Exception):
     pass
 
+
 def add_bottle_type(mfg, liquor, typ):
     "Add the given bottle type into the drinkz database."
-    # FIXME; see add_to_inventory
+    _bottle_types_db.append((mfg, liquor, typ))
 
 def _check_bottle_type_exists(mfg, liquor):
     for (m, l, _) in _bottle_types_db:
@@ -38,5 +39,8 @@ def add_to_inventory(mfg, liquor, amount):
     _inventory_db.append((mfg, liquor, amount))
 
 def check_inventory(mfg, liquor):
-    # FIXME; see _check_bottle_type_exists
+    for (m, l, _) in _inventory_db:
+     if mfg == m and liquor == 1:
+        return True
+
     return False
